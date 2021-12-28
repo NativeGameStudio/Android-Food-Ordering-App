@@ -10,17 +10,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.ratingapp.FoodDetails;
+import com.example.ratingapp.FoodActivity;
+import com.example.ratingapp.item.Food;
 import com.example.ratingapp.R;
-import com.example.ratingapp.model.Popular;
 import java.util.List;
 
 public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularViewHolder> {
+    private final Context context;
+    private final List<Food> popularList;
 
-    private Context context;
-    private List<Popular> popularList;
-
-    public PopularAdapter(Context context, List<Popular> popularList) {
+    public PopularAdapter(Context context, List<Food> popularList) {
         this.context = context;
         this.popularList = popularList;
     }
@@ -28,11 +27,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
     @NonNull
     @Override
     public PopularViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(context).inflate(R.layout.popular_recycler_items, parent, false);
-         // here we need to create a layout for recyclerview cell items.
-
-
         return new PopularViewHolder(view);
     }
 
@@ -40,13 +35,16 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
     public void onBindViewHolder(@NonNull PopularViewHolder holder, @SuppressLint("RecyclerView") final int position) {
 
         holder.popularName.setText(popularList.get(position).getName());
-
-        // for image we add Glide library dependency for image fetching from server
+        holder.popularRating.setText(popularList.get(position).getRating());
+        holder.popularCharges.setText(popularList.get(position).getDeliveryCharges());
+        holder.popularDeliveryTime.setText(popularList.get(position).getDeliveryTime());
+        holder.popularPrice.setText("$ "+ popularList.get(position).getPrice());
+        holder.popularImage.setImageResource(popularList.get(position).getImageUrl());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(context, FoodDetails.class);
+                Intent i = new Intent(context, FoodActivity.class);
                 i.putExtra("name", popularList.get(position).getName());
                 i.putExtra("price", popularList.get(position).getPrice());
                 i.putExtra("rating", popularList.get(position).getRating());
@@ -64,16 +62,21 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
     }
 
     public static class PopularViewHolder extends RecyclerView.ViewHolder{
-
-        ImageView popularImage;
-        TextView popularName;
+        private final TextView popularName, popularRating, popularDeliveryTime, popularCharges, popularPrice;
+        private final ImageView popularImage;
 
         public PopularViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            popularName = itemView.findViewById(R.id.all_menu_name);
-            popularImage = itemView.findViewById(R.id.all_menu_image);
+            popularName = itemView.findViewById(R.id.popular_name);
+            popularRating = itemView.findViewById(R.id.popular_rating);
+            popularDeliveryTime = itemView.findViewById(R.id.popular_delivery_time);
+            popularCharges = itemView.findViewById(R.id.popular_delivery_type);
+            popularPrice = itemView.findViewById(R.id.popular_price);
+            popularImage = itemView.findViewById(R.id.popular_image);
 
         }
     }
+
+
 }

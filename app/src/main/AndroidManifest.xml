@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FoodDetails"
+            android:name=".FoodActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.RatingApp.NoActionBar" />
 

@@ -9,25 +9,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.ratingapp.adapter.AllMenuAdapter;
+import com.example.ratingapp.adapter.RecommendAdapter;
+import com.example.ratingapp.adapter.CategoryAdapter;
 import com.example.ratingapp.adapter.PopularAdapter;
-import com.example.ratingapp.adapter.RecommendedAdapter;
-import com.example.ratingapp.model.Allmenu;
-import com.example.ratingapp.model.Popular;
-import com.example.ratingapp.model.Recommended;
+import com.example.ratingapp.item.Category;
+import com.example.ratingapp.item.Food;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
-    private RecyclerView popularRecyclerView, recommendedRecyclerView, allMenuRecyclerView;
+    private RecyclerView categoryRecyclerView, recommendedRecyclerView, allMenuRecyclerView;
 
+    private CategoryAdapter categoryAdapter;
     private PopularAdapter popularAdapter;
-    private RecommendedAdapter recommendedAdapter;
-    private AllMenuAdapter allMenuAdapter;
+    private RecommendAdapter recommendAdapter;
 
-    private ArrayList<Popular> popularList = new ArrayList<>();
-    private ArrayList<Recommended> recommendedList = new ArrayList<>();
-    private List<Allmenu> allmenuList = new ArrayList<>();
+    private final List<Category> categoryList = new ArrayList<>();
+    private final List<Food> popularList = new ArrayList<>();
+    private final List<Food> recommendList = new ArrayList<>();
 
     public HomeFragment() {
         // Required empty public constructor
@@ -50,59 +49,62 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        popularList.add(new Popular("food1", 0, "4.5", "20 min", "Free", "150", ""));
-        popularList.add(new Popular("food2", 0, "4.5", "20 min", "Free", "150", ""));
-        popularList.add(new Popular("food3", 0, "4.5", "20 min", "Free", "150", ""));
-        popularList.add(new Popular("food4", 0, "4.5", "20 min", "Free", "150", ""));
-        popularList.add(new Popular("food5", 0, "4.5", "20 min", "Free", "150", ""));
+        //Add category item here
+        categoryList.add(new Category("Burger", R.drawable.category_1));
+        categoryList.add(new Category("Pizza", R.drawable.category_2));
+        categoryList.add(new Category("Drinks", R.drawable.category_3));
+        categoryList.add(new Category("Others", R.drawable.category_others));
 
-        recommendedList.add(new Recommended("food1", 0, "4.5", "20 min", "Free", "150", ""));
-        recommendedList.add(new Recommended("food2", 0, "4.5", "20 min", "Free", "150", ""));
-        recommendedList.add(new Recommended("food3", 0, "4.5", "20 min", "Free", "150", ""));
-        recommendedList.add(new Recommended("food4", 0, "4.5", "20 min", "Free", "150", ""));
-        recommendedList.add(new Recommended("food5", 0, "4.5", "20 min", "Free", "150", ""));
+        //Add popular item here
+        popularList.add(new Food("Bacon Burger", R.drawable.burger_1, "4.8", "20 min", "Free Delivery", "150", ""));
+        popularList.add(new Food("Pepperoni Pizza", R.drawable.pizza_1, "4.5", "30 min", "$ 5", "350", ""));
+        popularList.add(new Food("Margherita Pizza", R.drawable.pizza_2, "4.3", "30 min", "$ 5", "350", ""));
+        popularList.add(new Food("CockTail", R.drawable.drink_2, "4.0", "10 min", "Free Delivery", "100", ""));
 
-        allmenuList.add(new Allmenu("food1", 0, "4.5", "20 min", "Free", "150", ""));
-        allmenuList.add(new Allmenu("food2", 0, "4.5", "20 min", "Free", "150", ""));
-        allmenuList.add(new Allmenu("food3", 0, "4.5", "20 min", "Free", "150", ""));
-        allmenuList.add(new Allmenu("food4", 0, "4.5", "20 min", "Free", "150", ""));
-        allmenuList.add(new Allmenu("food5", 0, "4.5", "20 min", "Free", "150", ""));
+        //Add recommend item here
+        recommendList.add(new Food("Cheeses Burger", R.drawable.burger_2, "4.5", "20 min", "Free Delivery", "150", ""));
+        recommendList.add(new Food("Chicken Burger", R.drawable.burger_3, "4.0", "20 min", "Free Delivery", "150", "Spicy"));
+        recommendList.add(new Food("Deluxe Pizza", R.drawable.pizza_3, "4.1", "30 min", "$ 5", "350", ""));
+        recommendList.add(new Food("Bacon Burger", R.drawable.burger_1, "4.8", "20 min", "Free Delivery", "150", ""));
+        recommendList.add(new Food("Margherita Pizza", R.drawable.pizza_2, "4.3", "30 min", "$ 5", "350", "3 Cheese"));
+        recommendList.add(new Food("Cola", R.drawable.drink_1, "3.8", "10 min", "Free Delivery", "100", ""));
+        recommendList.add(new Food("Orange Juice", R.drawable.drink_3, "3.5", "10 min", "Free Delivery", "100", ""));
 
 
+        getCategoryData(categoryList);
         getPopularData(popularList);
-        getRecommendedData(recommendedList);
-        getAllMenu(allmenuList);
+        getRecommendMenu(recommendList);
 
     }
 
-    private void getPopularData(List<Popular> popularList){
+    private void getCategoryData(List<Category> categoryList){
 
-        popularRecyclerView = getView().findViewById(R.id.popular_recycler);
-        popularAdapter = new PopularAdapter(getActivity(), popularList);
+        categoryRecyclerView = getView().findViewById(R.id.popular_recycler);
+        categoryAdapter = new CategoryAdapter(getActivity(), categoryList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        popularRecyclerView.setLayoutManager(layoutManager);
-        popularRecyclerView.setAdapter(popularAdapter);
+        categoryRecyclerView.setLayoutManager(layoutManager);
+        categoryRecyclerView.setAdapter(categoryAdapter);
 
     }
 
-    private void  getRecommendedData(List<Recommended> recommendedList){
+    private void getPopularData(List<Food> popilarList){
 
         recommendedRecyclerView = getView().findViewById(R.id.recommended_recycler);
-        recommendedAdapter = new RecommendedAdapter(getActivity(), recommendedList);
+        popularAdapter = new PopularAdapter(getActivity(), popilarList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recommendedRecyclerView.setLayoutManager(layoutManager);
-        recommendedRecyclerView.setAdapter(recommendedAdapter);
+        recommendedRecyclerView.setAdapter(popularAdapter);
 
     }
 
-    private void  getAllMenu(List<Allmenu> allmenuList){
+    private void getRecommendMenu(List<Food> recommendList){
 
         allMenuRecyclerView = getView().findViewById(R.id.all_menu_recycler);
-        allMenuAdapter = new AllMenuAdapter(getActivity(), allmenuList);
+        recommendAdapter = new RecommendAdapter(getActivity(), recommendList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         allMenuRecyclerView.setLayoutManager(layoutManager);
-        allMenuRecyclerView.setAdapter(allMenuAdapter);
-        allMenuAdapter.notifyDataSetChanged();
+        allMenuRecyclerView.setAdapter(recommendAdapter);
+        //recommendAdapter.notifyDataSetChanged();
 
     }
 }

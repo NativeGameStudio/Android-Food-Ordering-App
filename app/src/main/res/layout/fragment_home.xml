@@ -7,8 +7,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:layout_height="wrap_content"
+        tools:context=".HomeFragment">
 
         <ImageView
             android:layout_width="0dp"
@@ -28,7 +28,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/open_sans_bold"
-            android:text="Taiwanese Food"
+            android:text="Food App"
             android:textColor="#333333"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/open_sans_bold"
-            android:text="Popular this Week"
+            android:text="Category"
             android:textColor="#333333"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +93,7 @@
             android:layout_marginStart="22dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/open_sans_bold"
-            android:text="Recommened for You"
+            android:text="Popular this week"
             android:textColor="#333333"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -115,7 +115,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/open_sans_bold"
-            android:text="All Menu Items"
+            android:text="Recommend for You"
             android:textColor="#333333"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"

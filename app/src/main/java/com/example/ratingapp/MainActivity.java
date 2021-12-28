@@ -3,6 +3,8 @@ package com.example.ratingapp;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -59,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
     private class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        private Context context;
-        private ArrayList<Fragment>fragments;
+        private final Context context;
+        private final ArrayList<Fragment>fragments;
 
         public SectionsPagerAdapter(Context context, FragmentManager fm) {
             super(fm);
@@ -72,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             fragments.add(new UserFragment());
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int position) {
 
