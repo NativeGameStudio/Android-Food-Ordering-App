@@ -44,12 +44,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             public void onClick(View view) {
 
                 /*
-                Intent i = new Intent(context, FoodDetails.class);
-                i.putExtra("name", categoryList.get(position).getName());
-                i.putExtra("image", categoryList.get(position).getImageUrl());
-
-                context.startActivity(i);
-
+                do stuff here
                  */
             }
         });

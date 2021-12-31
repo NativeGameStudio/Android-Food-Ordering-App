@@ -37,11 +37,15 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.Reco
 
         holder.recommendName.setText(recommendList.get(position).getName());
         holder.recommendPrice.setText("$ "+ recommendList.get(position).getPrice());
-        holder.recommendTime.setText(recommendList.get(position).getDeliveryTime());
+        holder.recommendDeliveryTime.setText(recommendList.get(position).getDeliveryTime());
         holder.recommendRating.setText(recommendList.get(position).getRating());
-        holder.recommendCharges.setText(recommendList.get(position).getDeliveryCharges());
-        holder.recommendNote.setText(recommendList.get(position).getNote());
+        if(recommendList.get(position).getDeliveryCharges() == 0){
+            holder.recommendCharges.setText("Free Delivery");
+        }else {
+            holder.recommendCharges.setText("$ " + recommendList.get(position).getDeliveryCharges());
+        }
         holder.recommendImage.setImageResource(recommendList.get(position).getImageUrl());
+        holder.recommendNote.setText(recommendList.get(position).getNote());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +68,7 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.Reco
     }
 
     public static class RecommendViewHolder extends RecyclerView.ViewHolder{
-        private final TextView recommendName, recommendNote, recommendRating, recommendTime, recommendCharges, recommendPrice;
+        private final TextView recommendName, recommendNote, recommendRating, recommendDeliveryTime, recommendCharges, recommendPrice;
         private final ImageView recommendImage;
 
         public RecommendViewHolder(@NonNull View itemView) {
@@ -74,7 +78,7 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.Reco
             recommendNote = itemView.findViewById(R.id.recommend_note);
             recommendCharges = itemView.findViewById(R.id.recommend_delivery_charge);
             recommendRating = itemView.findViewById(R.id.recommend_rating);
-            recommendTime = itemView.findViewById(R.id.recommend_delivery_time);
+            recommendDeliveryTime = itemView.findViewById(R.id.recommend_delivery_time);
             recommendPrice = itemView.findViewById(R.id.recommend_price);
             recommendImage = itemView.findViewById(R.id.recommend_image);
         }

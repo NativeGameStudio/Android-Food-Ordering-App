@@ -8,14 +8,14 @@
     tools:context=".FoodActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/food_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+        app:srcCompat="@drawable/ic_arrow_back" />
 
     <ImageView
         android:id="@+id/food_image"
@@ -25,7 +25,7 @@
         android:adjustViewBounds="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/food_back"
         app:srcCompat="@drawable/burger_1" />
 
     <TextView
@@ -43,7 +43,7 @@
 
     <RatingBar
         android:id="@+id/ratingBar"
-        android:layout_width="239dp"
+        android:layout_width="240dp"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/name"
@@ -83,7 +83,6 @@
         app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
     <TextView
-        android:id="@+id/textView8"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"

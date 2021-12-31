@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +14,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.ratingapp.fragment.MenuFragment;
+import com.example.ratingapp.fragment.OrderFragment;
+import com.example.ratingapp.fragment.UserFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
@@ -50,14 +52,12 @@ public class MainActivity extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
 
         tabs.getTabAt(0).setIcon(R.drawable.ic_home);
-        tabs.getTabAt(1).setIcon(R.drawable.ic_search);
-        tabs.getTabAt(2).setIcon(R.drawable.ic_order);
-        tabs.getTabAt(3).setIcon(R.drawable.ic_user);
+        tabs.getTabAt(1).setIcon(R.drawable.ic_order);
+        tabs.getTabAt(2).setIcon(R.drawable.ic_user);
 
         tabs.getTabAt(0).getIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
         tabs.getTabAt(1).getIcon().setColorFilter(getResources().getColor(R.color.gray), PorterDuff.Mode.SRC_IN);
         tabs.getTabAt(2).getIcon().setColorFilter(getResources().getColor(R.color.gray), PorterDuff.Mode.SRC_IN);
-        tabs.getTabAt(3).getIcon().setColorFilter(getResources().getColor(R.color.gray), PorterDuff.Mode.SRC_IN);
 
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -86,8 +86,7 @@ public class MainActivity extends AppCompatActivity {
             super(fm);
             this.context = context;
             this.fragments = new ArrayList<>();
-            fragments.add(new HomeFragment());
-            fragments.add(new SearchFragment());
+            fragments.add(new MenuFragment());
             fragments.add(new OrderFragment());
             fragments.add(new UserFragment());
         }
@@ -112,8 +111,6 @@ public class MainActivity extends AppCompatActivity {
                     return context.getResources().getString(R.string.tab_2);
                 case 2:
                     return context.getResources().getString(R.string.tab_3);
-                case 3:
-                    return context.getResources().getString(R.string.tab_4);
                 default:
                     return null;
             }

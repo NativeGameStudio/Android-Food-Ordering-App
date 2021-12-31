@@ -35,10 +35,14 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
     public void onBindViewHolder(@NonNull PopularViewHolder holder, @SuppressLint("RecyclerView") final int position) {
 
         holder.popularName.setText(popularList.get(position).getName());
-        holder.popularRating.setText(popularList.get(position).getRating());
-        holder.popularCharges.setText(popularList.get(position).getDeliveryCharges());
+        holder.popularPrice.setText("$ "+ String.valueOf(popularList.get(position).getPrice()));
         holder.popularDeliveryTime.setText(popularList.get(position).getDeliveryTime());
-        holder.popularPrice.setText("$ "+ popularList.get(position).getPrice());
+        holder.popularRating.setText(popularList.get(position).getRating());
+        if(popularList.get(position).getDeliveryCharges() == 0){
+            holder.popularCharges.setText("Free Delivery");
+        }else {
+            holder.popularCharges.setText("$ " + popularList.get(position).getDeliveryCharges());
+        }
         holder.popularImage.setImageResource(popularList.get(position).getImageUrl());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

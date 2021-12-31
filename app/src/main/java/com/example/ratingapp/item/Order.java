@@ -1,37 +1,34 @@
 package com.example.ratingapp.item;
 
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 public class Order {
+    private final SharedPreferences order, orderID;
 
-    private final ArrayList<Food> foodList;
-    private final ArrayList<Integer> food_amount_list;
-
-    public Order(){
-        this.foodList = new ArrayList<>();
-        this.food_amount_list = new ArrayList<>();
+    public Order(Context context){
+        order = context.getSharedPreferences("order", 0);
+        orderID = context.getSharedPreferences("orderID", 0);
     }
 
-    public void addFood(Food food, int amount){
-        this.foodList.add(food);
-        this.food_amount_list.add(amount);
+    public void setOrderID(int id){
+        this.orderID.edit().putInt("id", id).apply();
     }
 
-    public void deleteFood(Food food){
-
-        for(int i = 0; i < foodList.size(); i++){
-            if(foodList.get(i).equals(food)){
-                this.food_amount_list.remove(i);
-                break;
-            }
-        }
-
-        this.foodList.remove(food);
+    public int getOrderID(String key){
+        return this.orderID.getInt("id", 1);
     }
 
-    public void destroyOrder(){
-        this.foodList.clear();
-        this.food_amount_list.clear();
+    public void setOrderFoodAmount(String key, int amount){
+        this.order.edit().putInt(key, amount).apply();
+    }
+
+    public int getOrderFoodAmount(String key){
+        return this.order.getInt(key, 0);
+    }
+
+    public void clearOrder(){
+        this.order.edit().clear().apply();
     }
 
 }

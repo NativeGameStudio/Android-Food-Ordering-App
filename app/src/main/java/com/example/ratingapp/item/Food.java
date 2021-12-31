@@ -5,11 +5,11 @@ public class Food {
     private int imageUrl;
     private String rating;
     private String deliveryTime;
-    private String deliveryCharges;
-    private String price;
+    private int deliveryCharges;
+    private int price;
     private String note;
 
-    public Food(String name, int imageUrl, String rating, String deliveryTime, String deliveryCharges, String price, String note){
+    public Food(String name, int imageUrl, String rating, String deliveryTime, int deliveryCharges, int price, String note){
         this.name = name;
         this.imageUrl = imageUrl;
         this.rating = rating;
@@ -51,19 +51,19 @@ public class Food {
         this.deliveryTime = deliveryTime;
     }
 
-    public String getDeliveryCharges() {
+    public int getDeliveryCharges() {
         return deliveryCharges;
     }
 
-    public void setDeliveryCharges(String deliveryCharges) {
+    public void setDeliveryCharges(int deliveryCharges) {
         this.deliveryCharges = deliveryCharges;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:elevation="500dp"
         android:src="@drawable/ic_cart"
-        app:backgroundTint="@color/teal_700"
+        app:backgroundTint="#F44336"
         app:tint="@color/white"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
