@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 import com.example.ratingapp.fragment.MenuFragment;
 import com.example.ratingapp.fragment.OrderFragment;
 import com.example.ratingapp.fragment.UserFragment;
@@ -21,12 +19,23 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 
+/** The main activity only in charge of manage page,
+ *  and other system wide and hardware requirement.
+ *  Please do details setting in each page's fragment
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         setContentView(R.layout.activity_main);
+
+        this.initView();
+
+    }
+
+    private void initView(){
 
         // Initializing cart button
         FloatingActionButton floatingActionButton = findViewById(R.id.btn_cart);
@@ -37,10 +46,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        this.initView();
-    }
-
-    private void initView(){
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
 
         // Initializing page
@@ -51,22 +56,29 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
+        // Initializing icon
         tabs.getTabAt(0).setIcon(R.drawable.ic_home);
         tabs.getTabAt(1).setIcon(R.drawable.ic_order);
         tabs.getTabAt(2).setIcon(R.drawable.ic_user);
 
+        // Initializing color
         tabs.getTabAt(0).getIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
         tabs.getTabAt(1).getIcon().setColorFilter(getResources().getColor(R.color.gray), PorterDuff.Mode.SRC_IN);
         tabs.getTabAt(2).getIcon().setColorFilter(getResources().getColor(R.color.gray), PorterDuff.Mode.SRC_IN);
 
+        // Change color if selected
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+
+                // Turn write if selected
                 tab.getIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
+
+                // Turn gray if unselected
                 tab.getIcon().setColorFilter(getResources().getColor(R.color.gray), PorterDuff.Mode.SRC_IN);
             }
 
@@ -77,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /** Adapter to manage page and tab
+     */
     private static class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         private final Context context;
@@ -85,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
         public SectionsPagerAdapter(Context context, FragmentManager fm) {
             super(fm);
             this.context = context;
+
+            // Add page
             this.fragments = new ArrayList<>();
             fragments.add(new MenuFragment());
             fragments.add(new OrderFragment());
@@ -95,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
 
-            // getItem is called to instantiate the fragment for the given page.
+            // GetItem is called to instantiate the fragment for the given page.
             return fragments.get(position);
         }
 

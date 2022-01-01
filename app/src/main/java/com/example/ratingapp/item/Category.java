@@ -1,5 +1,7 @@
 package com.example.ratingapp.item;
 
+/** Category include kind of all food
+ */
 public class Category {
 
     private String name;

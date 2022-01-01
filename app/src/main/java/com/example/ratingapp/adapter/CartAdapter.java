@@ -14,6 +14,9 @@ import com.example.ratingapp.R;
 import com.example.ratingapp.item.Food;
 import java.util.List;
 
+/** Use this adapter to
+ *  manage cart item
+ */
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
     private final List<Food> cartList;
     private final Cart cart;
@@ -30,8 +33,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     @Override
     public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
+        // Create a layout for recyclerview cell items
         View view = LayoutInflater.from(cartActivity).inflate(R.layout.cart_recycler_items, parent, false);
-        // here we need to create a layout for recyclerview cell items.
 
         return new CartViewHolder(view);
     }
@@ -44,7 +47,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.cartAmount.setText(String.valueOf(holder.amount));
         holder.cartPrice.setText("$ "+ cartList.get(position).getPrice());
 
-        // Add food amount
+        // Button to add food amount
         holder.cartAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,7 +64,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             }
         });
 
-        // Reduce food amount
+        // Button to reduce food amount
         holder.cartReduce.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,20 +84,20 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             }
         });
 
-        // Delete food
+        // Long click to delete food
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
 
-                // delete date
+                // Delete date
                 cart.deleteFood(cartList.get(position).getName());
 
-                //remove view
+                // Remove view
                 cartList.remove(position);
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, cartList.size());
 
-                // text
+                // Calculate fee
                 cartActivity.calculateFee();
 
                 return false;
@@ -111,7 +114,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     public static class CartViewHolder extends RecyclerView.ViewHolder{
         private final ImageView cartImage;
         private final TextView cartName, cartAmount, cartPrice, cartAdd, cartReduce;
-        private int amount = 1;
+        private int amount = 1; // Food amount
 
         public CartViewHolder(@NonNull View itemView) {
             super(itemView);

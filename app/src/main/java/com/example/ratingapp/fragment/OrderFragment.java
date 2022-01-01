@@ -15,6 +15,9 @@ import com.example.ratingapp.item.Order;
 import java.util.ArrayList;
 import java.util.List;
 
+/** Use this fragment to
+ *  manage order page
+ */
 public class OrderFragment extends Fragment {
     private RecyclerView orderRecyclerView;
     private OrderAdapter orderAdapter;
@@ -27,12 +30,13 @@ public class OrderFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        // Use onViewCreated so the content will update everytime the user open
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_order, container, false);
     }
@@ -41,17 +45,27 @@ public class OrderFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getOrderData(orderList);
+        // Check is order exist
+        Order order = new Order(getActivity());
+        if(order.getOrderID("id") != 0) {
+            orderList.add(order);
+            getOrderData(orderList);
+        }
 
     }
 
     private void getOrderData(List<Order> orderList){
 
         orderRecyclerView = getView().findViewById(R.id.order_recycler);
-        orderAdapter = new OrderAdapter(getActivity(), orderList);
+        orderAdapter = new OrderAdapter(getActivity(), orderList, this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         orderRecyclerView.setLayoutManager(layoutManager);
         orderRecyclerView.setAdapter(orderAdapter);
 
+    }
+
+    public void showRatingDialog(){
+        RatingDialogFragment dialogFragment = new RatingDialogFragment();
+        dialogFragment.show(getActivity().getSupportFragmentManager(), "");
     }
 }

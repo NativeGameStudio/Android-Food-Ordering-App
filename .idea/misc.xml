@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/drawable/add_to_cart_bg.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/drawable/button_bg.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/drawable/ic_arrow_back.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/drawable/ic_arrow_back_black_24dp.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/drawable/ic_baseline_house_24.xml" value="0.26979166666666665" />
@@ -16,6 +17,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/drawable/ic_order.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/drawable/ic_search.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/drawable/ic_search_black_24dp.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/drawable/ic_user.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/drawable/search_bg.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/drawable/time_bg.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/drawable/title_background.xml" value="0.26979166666666665" />
@@ -31,9 +33,10 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/layout/fragment_main.xml" value="0.264" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/layout/fragment_menu.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/layout/fragment_order.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/layout/fragment_rating_dialog.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/layout/fragment_search.xml" value="0.2390625" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/layout/fragment_user.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/layout/order_recycler_items.xml" value="0.264" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/layout/order_recycler_items.xml" value="0.4" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/layout/popular_recycler_items.xml" value="0.264" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/layout/recommend_recycler_items.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RatingApp/app/src/main/res/layout/recommended_recycler_items.xml" value="0.536" />

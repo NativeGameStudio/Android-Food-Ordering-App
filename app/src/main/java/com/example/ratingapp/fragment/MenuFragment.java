@@ -18,6 +18,9 @@ import com.example.ratingapp.item.Food;
 import com.example.ratingapp.item.FoodList;
 import java.util.List;
 
+/** Use this fragment to
+ *  manage menu page
+ */
 public class MenuFragment extends Fragment {
     private RecyclerView categoryRecyclerView, recommendedRecyclerView, allMenuRecyclerView;
 
@@ -32,7 +35,7 @@ public class MenuFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        // Use onViewCreated so the content will update everytime the user open
     }
 
     @Override
@@ -46,8 +49,8 @@ public class MenuFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Food list
         FoodList foodList = new FoodList();
-
         getCategoryData(foodList.getCategoryList());
         getPopularData(foodList.getPopularList());
         getRecommendMenu(foodList.getRecommendList());

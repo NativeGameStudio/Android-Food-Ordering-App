@@ -13,6 +13,9 @@ import com.example.ratingapp.R;
 import com.example.ratingapp.item.Category;
 import java.util.List;
 
+/** Use this adapter to
+ *  manage category item
+ */
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
     private final Context context;
     private final List<Category> categoryList;
@@ -26,9 +29,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
+        // Create a layout for recyclerview cell items
         View view = LayoutInflater.from(context).inflate(R.layout.category_recycler_items, parent, false);
-         // here we need to create a layout for recyclerview cell items.
-
 
         return new CategoryViewHolder(view);
     }
@@ -43,9 +45,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             @Override
             public void onClick(View view) {
 
-                /*
-                do stuff here
-                 */
+                // Do stuff here
+
             }
         });
 

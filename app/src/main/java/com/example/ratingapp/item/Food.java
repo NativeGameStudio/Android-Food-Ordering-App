@@ -1,11 +1,13 @@
 package com.example.ratingapp.item;
 
+/** Food includes all info of food
+ */
 public class Food {
     private String name;
-    private int imageUrl;
+    private int imageUrl;          // ID name of food image
     private String rating;
     private String deliveryTime;
-    private int deliveryCharges;
+    private int deliveryCharges;       // If 0 will show free delivery
     private int price;
     private String note;
 

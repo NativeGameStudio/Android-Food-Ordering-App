@@ -3,28 +3,39 @@ package com.example.ratingapp.item;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+/** Use the key "order"
+ *  to get order data
+ */
 public class Order {
-    private final SharedPreferences order, orderID;
+    private final SharedPreferences order;
 
     public Order(Context context){
         order = context.getSharedPreferences("order", 0);
-        orderID = context.getSharedPreferences("orderID", 0);
     }
 
     public void setOrderID(int id){
-        this.orderID.edit().putInt("id", id).apply();
+        this.order.edit().putInt("id", id).apply();
     }
 
     public int getOrderID(String key){
-        return this.orderID.getInt("id", 1);
+        return this.order.getInt("id", 0);
     }
 
-    public void setOrderFoodAmount(String key, int amount){
-        this.order.edit().putInt(key, amount).apply();
+    // state: 0 for delivering, 1 for order complete
+    public void setOrderState(int key){
+        this.order.edit().putInt("state", key).apply();
     }
 
-    public int getOrderFoodAmount(String key){
-        return this.order.getInt(key, 0);
+    public int getOrderState(String key){
+        return this.order.getInt("state", 0);
+    }
+
+    public void setOrderPrice(int key){
+        this.order.edit().putInt("price", key).apply();
+    }
+
+    public int getOrderPrice(String key){
+        return this.order.getInt("price", 0);
     }
 
     public void clearOrder(){

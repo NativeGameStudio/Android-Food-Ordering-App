@@ -26,6 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/food_back"
+        android:transitionName="transition"
         app:srcCompat="@drawable/burger_1" />
 
     <TextView
@@ -43,9 +44,10 @@
 
     <RatingBar
         android:id="@+id/ratingBar"
-        android:layout_width="240dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
+        android:numStars="5"
         app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
@@ -102,10 +104,11 @@
         android:layout_margin="16dp"
         android:background="@drawable/button_bg"
         android:fontFamily="@font/open_sans_bold"
-        android:text="Add to cart"
+        android:text="Food in cart"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:backgroundTint="@color/teal_700"
+        android:enabled="false"
+        app:backgroundTint="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

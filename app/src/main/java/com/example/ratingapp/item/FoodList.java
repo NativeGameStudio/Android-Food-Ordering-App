@@ -1,9 +1,12 @@
 package com.example.ratingapp.item;
 
 import com.example.ratingapp.R;
-
 import java.util.ArrayList;
 
+/** Use this class to manage
+ *  <Food> , <Category> ,
+ *  popular items and recommend items
+ */
 public class FoodList {
     private final ArrayList<Category>categoryList = new ArrayList<>();
     private final ArrayList<Food>allFoodList = new ArrayList<>();

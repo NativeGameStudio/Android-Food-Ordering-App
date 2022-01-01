@@ -1,7 +1,7 @@
 package com.example.ratingapp.adapter;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,25 +9,32 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.ratingapp.FoodActivity;
 import com.example.ratingapp.R;
 import com.example.ratingapp.item.Food;
 import java.util.List;
 
+/** Use this adapter to
+ *  manage recommend item
+ */
 public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.RecommendViewHolder> {
-    private final Context context;
+    private final Activity activity;
     private final List<Food> recommendList;
 
-    public RecommendAdapter(Context context, List<Food> recommendList) {
-        this.context = context;
+    public RecommendAdapter(Activity activity, List<Food> recommendList) {
+        this.activity = activity;
         this.recommendList = recommendList;
     }
 
     @NonNull
     @Override
     public RecommendViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.recommend_recycler_items, parent, false);
+
+        // Create a layout for recyclerview cell items
+        View view = LayoutInflater.from(activity).inflate(R.layout.recommend_recycler_items, parent, false);
 
         return new RecommendViewHolder(view);
     }
@@ -50,13 +57,19 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.Reco
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(context, FoodActivity.class);
+
+                // Send data to food page
+                Intent i = new Intent(activity, FoodActivity.class);
                 i.putExtra("name", recommendList.get(position).getName());
                 i.putExtra("price", recommendList.get(position).getPrice());
                 i.putExtra("rating", recommendList.get(position).getRating());
                 i.putExtra("image", recommendList.get(position).getImageUrl());
 
-                context.startActivity(i);
+                // Share element animation
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        activity, holder.recommendImage, ViewCompat.getTransitionName(holder.recommendImage));
+
+                activity.startActivity(i, options.toBundle());
             }
         });
 

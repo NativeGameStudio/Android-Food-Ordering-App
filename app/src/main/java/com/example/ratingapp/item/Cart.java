@@ -3,8 +3,8 @@ package com.example.ratingapp.item;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/** use the key "food"
- *  to get cart
+/** Use the key "food"
+ *  to get cart data
  */
 public class Cart {
     private final SharedPreferences cart;
