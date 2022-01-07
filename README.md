@@ -1,7 +1,8 @@
 # RatingApp
-Android studio project
+Android studio project <- Food ordering system app ->
 
-Food ordering system app
+java code in app/src/main/java
+
 1. Menu 2. Food details 3. Shopping cart
 
 ![menu](https://user-images.githubusercontent.com/93536412/148550882-d2034234-4c1a-4569-b9be-97d74289e6f3.jpg)
