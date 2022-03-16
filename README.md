@@ -1,4 +1,4 @@
-# RatingApp
+# Food Ordering App
 Android studio project <- Food ordering system app ->
 
 java code in app/src/main/java
